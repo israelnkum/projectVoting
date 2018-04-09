@@ -65,43 +65,38 @@ $(document).ready(function() {
 /*
 *Update Voting information
  */
-function updateNomineeInformation(id) {
+function updateVoterInfor(id) {
     $("#c_normId").remove();
 
     if(id){
 
         // fetch Data for the hophonesteler with the current selected id
         $.ajax({
-            url:'../../validation/nominees/getNomineeID.php',
+            url:'../../validation/voters/getVoterId.php',
             type : 'post',
-            data :{nom_id :id},
+            data :{c_vote_id :id},
             dataType : 'json',
             success:function (response) {
 
-                $("#editID").val(response.nominee_id);
-                $("#editFristName").val(response.firstName);
-                $("#editLastName").val(response.lastName);
-                $("#editOtherName").val(response.otherName);
-                $("#editNomineePosition").val(response.postion);
-                $("#editNomineeClass").val(response.class);
-                $("#editIndexNumber").val(response.indexNumber);
+                $("#editVoterID").val(response.voter_id);
+                $("#editVoterFirstName").val(response.firstName);
+                $("#editVoterLastName").val(response.lastName);
+                $("#editVoterOtherName").val(response.otherName);
+                $("#editVoterClass").val(response.class);
+                $("#editVoterIndexNumber").val(response.indexNumber);
 
                 // Update Data
-                $("#updateNomineeForm").unbind('submit').bind('submit',function () {
+                $("#editVoterForm").unbind('submit').bind('submit',function () {
                     var form = $(this);
 
                     //validation
-                    var editFristName = $("#editFristName").val();
-                    var editLastName = $("#editLastName").val();
-                    var editOtherName = $("#editOtherName").val();
-                    var editNomineePosition = $("#editNomineePosition").val();
-                    var editNomineeClass = $("#editNomineeClass").val();
-                    var editIndexNumber = $("#editIndexNumber").val();
+                    var editVoterFirstName = $("#editVoterFirstName").val();
+                    var editVoterLastName = $("#editVoterLastName").val();
+                    var editVoterOtherName = $("#editVoterOtherName").val();
+                    var editVoterClass = $("#editVoterClass").val();
+                    var editVoterIndexNumber = $("#editVoterIndexNumber").val();
 
-
-
-
-                    if (editFristName && editLastName && editOtherName && editNomineePosition && editNomineeClass && editIndexNumber) {
+                    if (editVoterFirstName && editVoterLastName && editVoterOtherName && editVoterClass && editVoterIndexNumber) {
                         //submit the form to server
                         $.ajax({
                             url :form.attr('action'),
@@ -112,7 +107,7 @@ function updateNomineeInformation(id) {
                                 //     $(".invalid-feedback").removeClass('has-error');
                                 if(response.success === true){
                                     //close the modal after deleting
-                                    $("#editNomineeInfoModal").modal('hide');
+                                    $("#editVoterModal").modal('hide');
 
                                     swal({
                                         title: "Success",
@@ -124,7 +119,7 @@ function updateNomineeInformation(id) {
                                     $('body').removeClass('modal-open');
                                     $('.modal-backdrop').remove();
 
-                                    nomineeTable.ajax.reload(false);
+                                    allVotersTable.ajax.reload(false);
 
                                 }else{
                                     swal({

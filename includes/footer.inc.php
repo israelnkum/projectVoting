@@ -277,7 +277,84 @@
             </div>
         </div>
     </div>
-</div>
+</div><!-- Delete Voter modal -->
+
+
+
+<!-- edit voter Modal -->
+<div class="modal fade" id="editVoterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Voter Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="../../validation/voters/editVoter.php" id="editVoterForm" class="needs-validation form-material"  novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="col-md-4 mb-3">
+                            <label for="editVoterID">First name</label>
+                            <input type="text" class="form-control" id="editVoterID" name="editVoterID"  placeholder="id name" required>
+                        </div>
+                    </div>
+                        <div class="form-row form-material">
+                            <div class="col-md-4 mb-3">
+                                <label for="editVoterFirstName">First name</label>
+                                <input type="text" class="form-control" id="editVoterFirstName" name="editVoterFirstName"  placeholder="First name" required>
+                                <div class="invalid-feedback">
+                                    First Name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editVoterLastName">Last name</label>
+                                <input type="text" class="form-control" id="editVoterLastName" name="editVoterLastName" placeholder="Last Name" required>
+                                <div class="invalid-feedback">
+                                    Last Name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editVoterOtherName">Other Name</label>
+                                <input type="text" class="form-control" id="editVoterOtherName" name="editVoterOtherName" placeholder="Other Name">
+                            </div>
+                        </div>
+
+                        <div class="form-row form-material">
+                            <div class="col-md-6 mb-3">
+                                <label for="editVoterClass">Class</label>
+                                <select id="editVoterClass" name="editVoterClass" class="custom-select form-control" required>
+                                    <option value="">Select Class</option>
+                                    <option value="HND Level 100">HND Level 100</option>
+                                    <option value="HND Level 200">HND Level 200</option>
+                                    <option value="HND Level 300">HND Level 300</option>
+                                    <option value="Diploma Level 100">Diploma Level 100</option>
+                                    <option value="Diploma Level 200">Diploma Level 200</option>
+                                    <option value="BTECH Level 100">BTECH Level 100</option>
+                                    <option value="BTECH Level 200">BTECH Level 200</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Class is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="editVoterIndexNumber">Index Number</label>
+                                <input type="text" class="form-control" id="editVoterIndexNumber" name="editVoterIndexNumber" minlength="8" maxlength="8" placeholder="Index Number" required>
+                                <div class="invalid-feedback">
+                                    Index Number is required
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- Edit Voter Modal- -->
 <!-- Footer -->
 <footer class="footer">
     <div class="container">

@@ -9,7 +9,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
     $action ='
 
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deletePositionModal" onclick="deletePosition('.$row['voter_id'].')">
+<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editVoterModal" onclick="updateVoterInfor('.$row['voter_id'].')">
     <i class="fa fa-edit"></i>
 </button>
 
@@ -22,8 +22,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $output['data'][] = array(
         $x,
         $row['firstName'],
-        $row['otherName'],
         $row['lastName'],
+        $row['otherName'],
         $row['class'],
         $row['indexNumber'],
         $action

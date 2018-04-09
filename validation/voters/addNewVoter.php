@@ -37,7 +37,7 @@ if ($_POST) {
 
         $stmt = $connection -> prepare($sql);
         $stmt->bindValue(':firstName',$voterFirstName);
-        $stmt->bindValue(':lastName',$voterFirstName);
+        $stmt->bindValue(':lastName',$voterLastName);
         $stmt->bindValue(':otherName',$voterOtherName);
         $stmt->bindValue(':class',$voterClass);
         $stmt->bindValue(':indexNumber',$voterIndexNumber);
