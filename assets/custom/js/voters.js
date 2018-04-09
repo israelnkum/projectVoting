@@ -145,6 +145,8 @@ function updateVoterInfor(id) {
 
 
 
+
+
 /*
 * Delete hostelers
  */

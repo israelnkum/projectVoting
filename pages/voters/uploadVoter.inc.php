@@ -32,21 +32,47 @@ include "../../includes/navs.inc.php";
                                     Upload Voter(s)
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-md-6">
-                                        <h1 class="display-6">Note</h1>
-                                        <p></p>
+                                    <div class="text-center col-sm-12">
+                                        <?php if (isset($_GET['fileTypeError'])) { ?>
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <?php echo $_GET['fileTypeError'];?>
+                                            </div>
+                                        <?php }?>
                                     </div>
-                                    <div class="col-md-6 offset-md-5">
-                                        <form enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h1 class="display-6 text-danger">Note</h1>
+                                            <p class="text-primary">1. Only .csv File Allowed</p>
+                                            <p class="text-primary">2. The File shoul Follow the Format Below</p>
 
-                                            <div class="form-material">
-                                                <button class="btn btn-danger" name="btn_remove" id="btn_remove">Remove</button>
-                                                <button class="btn btn-success" name="btn_upload" id="btn_upload">Upload</button>
+                                            <div class="tablesaw table-responsive table-hover table-bordered" data-pattern="priority-columns">
+                                                <table  class="table text-dark  table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th data-priority="3">First Name</th>
+                                                        <th data-priority="1">Last Date</th>
+                                                        <th data-priority="3">Other Name</th>
+                                                        <th data-priority="3">Class</th>
+                                                        <th data-priority="3">Index Number</th>
+                                                        <th data-priority="3">Password</th>
+                                                    </tr>
+                                                    </thead>
+                                                </table>
                                             </div>
-                                        </form>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <form action="../../validation/voters/uploadVoter.code.php" enctype="multipart/form-data" method="post">
+                                                <div class="form-group m-t-30">
+                                                    <input type="file" name="selected_file" id="selected_file" class="form-control-file">
+                                                </div>
+
+                                                <div class="form-material">
+                                                    <button class="btn btn-danger" name="btn_remove" id="btn_remove">Remove</button>
+                                                    <button class="btn btn-success" type="submit" name="btn_upload" id="btn_upload">Upload</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
