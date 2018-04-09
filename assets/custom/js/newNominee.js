@@ -11,7 +11,6 @@ $(document).ready(function() {
     $("#newNomineeForm").unbind('submit').bind('submit',function () {
         var form = $(this);
         //validation
-        var VotingName = $("#VotingName").val();
         var fristName = $("#fristName").val();
         var lastName = $("#lastName").val();
         var otherName = $("#otherName").val();
@@ -21,7 +20,7 @@ $(document).ready(function() {
 
 
 
-        if (VotingName && fristName  && lastName && otherName && nomineePosition  && nomineeClass && indexNumber){
+        if (fristName  && lastName && otherName && nomineePosition  && nomineeClass && indexNumber){
             //submit the form to server
 
             $.ajax({

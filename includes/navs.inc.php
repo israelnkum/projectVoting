@@ -74,7 +74,7 @@
                         <ul class="submenu">
                             <li><a href="../../pages/voting/newVoting.inc.php">New Voting</a></li>
                             <li><a href="../../pages/voting/newPosition.inc.php">Add Position</a></li>
-                            <li><a href="../../pages/voting/newNominee.inc.php">Add Nominees</a></li>
+                            <li><a href="../../pages/voting/votingType.php">Add Nominees</a></li>
                         </ul>
                     </li>
 

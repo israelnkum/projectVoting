@@ -1,4 +1,6 @@
 
+
+
 <!-- Edit Voting modal -->
 <div class="modal fade" id="updateVotingInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -242,7 +244,11 @@
     </div>
 </footer>
 <!-- End Footer -->
-
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+</script>
 
 <!-- jQuery  -->
 <script src="../../assets/js/jquery/jquery.min.js"></script>
