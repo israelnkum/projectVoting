@@ -6,7 +6,7 @@ $positionID = $_POST['pstion'];
 //select every info from the new Voting table which has the id above
 $pos = "SELECT * FROM positions WHERE position_id = :positionID";
 $stmt_pos =$connection->prepare($pos);// prepare the statement
-$stmt_pos->bindValue(':$positionID', $positionID);//binding Value
+$stmt_pos->bindValue(':positionID', $positionID);//binding Value
 $result = $stmt_pos->execute();// executing the statement
 
 while ($row = $stmt_pos->fetch(PDO::FETCH_ASSOC)){

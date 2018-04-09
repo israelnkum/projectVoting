@@ -11,7 +11,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editNomineeInfoModal" onclick="updateNomineeInformation('.$row['nominee_id'].')">
     <i class="fa fa-edit"></i>
     </button>
-<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteVotingModal" onclick="deleteVoting('.$row['newVoting_id'].')">
+<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteNomineeModal" onclick="deleteNomineeInfo('.$row['nominee_id'].')">
 <i class="fa fa-trash-o">
 
 </i></button>

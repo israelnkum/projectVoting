@@ -153,24 +153,24 @@ function updateNomineeInformation(id) {
 /*
 * Delete hostelers
  */
-function deleteVoting(id) {
+function deleteNomineeInfo(id) {
     if(id){
         //click on delete button
-        $("#deleteVotingBtn").unbind('click').bind('click',function () {
+        $("#deleteNomineeBtn").unbind('click').bind('click',function () {
             $.ajax({
-                url:'../../validation/voting/deleteVoting.php',
+                url:'../../validation/nominees/deleteNominee.php',
                 type :'post',
-                data :{voting_id :id},
+                data :{norm_id :id},
                 dataType : 'json',
                 success:function (response) {
                     // $("#deleteVotingModal").modal('hide');
                     if (response.success === true){
-                        $("#deleteVotingModal").modal('hide');
+                        $("#deleteNomineeModal").modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
                         swal({
                             title: "success",
-                            text: "Voting Deleted Successfully",
+                            text: "Nominee Deleted Successfully",
                             icon: "success",
                             button:true
 
@@ -183,7 +183,7 @@ function deleteVoting(id) {
 
                     }else {
                         //close the modal after deleting
-                        $("#deleteVotingModal").modal('hide');
+                        $("#deleteNomineeModal").modal('hide');
 
 
                         swal({
