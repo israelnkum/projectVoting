@@ -96,14 +96,14 @@ include '../../includes/navs.inc.php';
                                         <div class="tablesaw table-responsive table-hover table-bordered" data-pattern="priority-columns">
                                             <table id="allVotingTable" class="table text-dark  table-striped">
                                                 <thead>
-                                                    <tr>
-                                                        <th data-priority="1">#</th>
-                                                        <th data-priority="3">Voting Name</th>
-                                                        <th data-priority="1">Voting Date</th>
-                                                        <th data-priority="3">Starting Time</th>
-                                                        <th data-priority="3">Ending Time</th>
-                                                        <th data-priority="3">Action</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th data-priority="1">#</th>
+                                                    <th data-priority="3">Voting Name</th>
+                                                    <th data-priority="1">Voting Date</th>
+                                                    <th data-priority="3">Starting Time</th>
+                                                    <th data-priority="3">Ending Time</th>
+                                                    <th data-priority="3">Action</th>
+                                                </tr>
                                                 </thead>
                                             </table>
                                         </div>

@@ -156,7 +156,7 @@ function updateNomineeInformation(id) {
 function deleteNomineeInfo(id) {
     if(id){
         //click on delete button
-        $("#deleteNomineeBtn").unbind('click').bind('click',function () {
+        $("#btnDeleteNominee").unbind('click').bind('click',function () {
             $.ajax({
                 url:'../../validation/nominees/deleteNominee.php',
                 type :'post',
@@ -165,7 +165,7 @@ function deleteNomineeInfo(id) {
                 success:function (response) {
                     // $("#deleteVotingModal").modal('hide');
                     if (response.success === true){
-                        $("#deleteNomineeModal").modal('hide');
+                        $("#exampleModal").modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
                         swal({
@@ -173,17 +173,16 @@ function deleteNomineeInfo(id) {
                             text: "Nominee Deleted Successfully",
                             icon: "success",
                             button:true
-
                         });
 
 
                         // refresh table after deleting
-                        allVotingTable.ajax.reload(false);
+                        nomineeTable.ajax.reload(false);
 
 
                     }else {
                         //close the modal after deleting
-                        $("#deleteNomineeModal").modal('hide');
+                        $("#exampleModal").modal('hide');
 
 
                         swal({

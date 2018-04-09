@@ -78,7 +78,7 @@ include '../../includes/navs.inc.php';
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Popup Title</h4>
+                <h4 class="modal-title">Select Voting</h4>
             </div>
             <form class="needs-validation" method="post" action="newNominee.inc.php" novalidate>
                 <div class="modal-body">
@@ -108,7 +108,7 @@ include '../../includes/navs.inc.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a role="button" class="btn btn-danger" href="newNominee.inc.php">Close</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </div>
             </form>

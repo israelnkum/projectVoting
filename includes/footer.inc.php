@@ -236,21 +236,22 @@
 
 
 <!-- delete Voting Modal -->
-<div class="modal" id="deleteNomineeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete Nominee</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h3 class="text-danger">Are you want to Delete This Nominee?</h3>
+                <h6>Do you want to Delete this Nominee</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" name="deleteNomineeBtn" id="deleteNomineeBtn">Delete</button>
+                <button type="button" class="btn btn-primary" id="btnDeleteNominee" name="btnDeleteNominee">Save changes</button>
             </div>
         </div>
     </div>
