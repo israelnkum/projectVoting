@@ -256,6 +256,28 @@
         </div>
     </div>
 </div>
+
+
+<!-- Delete voter Modal -->
+<div class="modal fade" id="deleteVoterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Voter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Do you want to Delete this voter</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnDeleteVoter" name="btnDeleteVoter">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -306,6 +328,8 @@
 <!-- App js -->
 <script src="../../assets/js/jquery/sweetalert.min.js"></script>
 
+
+<script src="../../assets/custom/js/voters.js"></script>
 <script src="../../assets/custom/js/NewVoting.js"></script>
 <script src="../../assets/custom/js/addNewPosition.js"></script>
 <script src="../../assets/custom/js/newNominee.js"></script>

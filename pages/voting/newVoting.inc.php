@@ -6,11 +6,6 @@ include "../../includes/navs.inc.php";
 ?>
 
 
-<?php
-include '../../includes/header.inc.php';
-include '../../includes/navs.inc.php';
-?>
-
 <div class="wrapper">
     <div class="container-fluid">
         <!-- Page-Title -->

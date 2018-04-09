@@ -4,13 +4,6 @@
 include "../../includes/header.inc.php";
 include "../../includes/navs.inc.php";
 ?>
-
-
-<?php
-include '../../includes/header.inc.php';
-include '../../includes/navs.inc.php';
-?>
-
 <div class="wrapper">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -19,11 +12,11 @@ include '../../includes/navs.inc.php';
                 <div class="page-title-box">
                     <div class="btn-group pull-right">
                         <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="#">Voting</a></li>
-                            <li class="breadcrumb-item active">New Nominee</li>
+                            <li class="breadcrumb-item"><a href="#">Voters</a></li>
+                            <li class="breadcrumb-item active">New Voter</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">New Nominee</h4>
+                    <h4 class="page-title">Add New Voter</h4>
                 </div>
             </div>
         </div>
@@ -36,50 +29,78 @@ include '../../includes/navs.inc.php';
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-title">
-                                    Add New Voting
+                                    Add New Voter
                                 </div>
 
                                 <div class="card-body">
-                                    <form method="post" action="../../validation/voting/addNewVoting.php" id="addNewVotingForm" name="addNewVotingForm" class="needs-validation" novalidate>
+                                    <form method="post" action="../../validation/voters/addNewVoter.php" id="newVoterForm" class="needs-validation form-material"  novalidate>
                                         <div class="form-row form-material">
                                             <div class="col-md-12 mb-3">
-                                                <label for="votingName">Voting name</label>
-                                                <input type="text" class="form-control" id="votingName" name="votingName" placeholder="Voting Name"  required>
+                                                <label for="voterFirstName">First name</label>
+                                                <input type="text" class="form-control" id="voterFirstName" name="voterFirstName"  placeholder="First name" required>
                                                 <div class="invalid-feedback">
-                                                    Voting Name is required
+                                                    First Name is required
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-row form-material">
                                             <div class="col-md-12 mb-3">
-                                                <label for="votingDate">Voting Date</label>
-                                                <input type="text" class="form-control" id="votingDate" name="votingDate" placeholder="Voting Date"  required>
+                                                <label for="voterLastName">Last name</label>
+                                                <input type="text" class="form-control" id="voterLastName" name="voterLastName" placeholder="Last Name" required>
                                                 <div class="invalid-feedback">
-                                                    Voting Date is required
+                                                    Last Name is required
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-row form-material">
                                             <div class="col-md-12 mb-3">
-                                                <label for="startingTime">Starting Time</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" id="startingTime" name="startingTime" placeholder="Starting Time"  required>
-                                                    <div class="invalid-feedback">
-                                                        Starting Time is required
-                                                    </div>
-                                                </div>
+                                                <label for="voterOtherName">Other Name</label>
+                                                <input type="text" class="form-control" id="voterOtherName" name="voterOtherName" placeholder="Other Name">
                                             </div>
                                         </div>
+
                                         <div class="form-row form-material">
                                             <div class="col-md-12 mb-3">
-                                                <label for="endingTime">Ending Time</label>
-                                                <input type="text" class="form-control" id="endingTime" name="endingTime" placeholder="Ending Time" required>
+                                                <label for="voterClass">Class</label>
+                                                <select id="voterClass" name="voterClass" class="custom-select form-control" required>
+                                                    <option value="">Select Class</option>
+                                                    <option value="HND Level 100">HND Level 100</option>
+                                                    <option value="HND Level 200">HND Level 200</option>
+                                                    <option value="HND Level 300">HND Level 300</option>
+                                                    <option value="Diploma Level 100">Diploma Level 100</option>
+                                                    <option value="Diploma Level 200">Diploma Level 200</option>
+                                                    <option value="BTECH Level 100">BTECH Level 100</option>
+                                                    <option value="BTECH Level 200">BTECH Level 200</option>
+                                                </select>
                                                 <div class="invalid-feedback">
-                                                    Ending Time is required
+                                                    Class is required
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Submit</button>
+
+                                        <div class="form-row form-material">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="voterIndexNumber">Index Number</label>
+                                                <input type="text" class="form-control" id="voterIndexNumber" name="voterIndexNumber" minlength="8" maxlength="8" placeholder="Index Number" required>
+                                                <div class="invalid-feedback">
+                                                    Index Number is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row form-material">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="voterPassword">Password</label>
+                                                <input type="text" class="form-control" id="voterPassword" name="voterPassword"  placeholder="Password" required>
+                                                <div class="invalid-feedback">
+                                                    Password is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -94,14 +115,15 @@ include '../../includes/navs.inc.php';
                                 <div class="card-body">
                                     <div class="table-rep-plugin">
                                         <div class="tablesaw table-responsive table-hover table-bordered" data-pattern="priority-columns">
-                                            <table id="allVotingTable" class="table text-dark  table-striped">
+                                            <table id="allVotersTable" class="table text-dark  table-striped">
                                                 <thead>
                                                 <tr>
                                                     <th data-priority="1">#</th>
-                                                    <th data-priority="3">Voting Name</th>
-                                                    <th data-priority="1">Voting Date</th>
-                                                    <th data-priority="3">Starting Time</th>
-                                                    <th data-priority="3">Ending Time</th>
+                                                    <th data-priority="3">First Name</th>
+                                                    <th data-priority="1">Last Date</th>
+                                                    <th data-priority="3">Other Name</th>
+                                                    <th data-priority="3">Class</th>
+                                                    <th data-priority="3">Index Number</th>
                                                     <th data-priority="3">Action</th>
                                                 </tr>
                                                 </thead>

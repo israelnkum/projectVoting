@@ -79,11 +79,11 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="icon-briefcase"></i>Voter's</a>
+                        <a href="#"><i class="icon-briefcase"></i>Voter(s)</a>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
-                                    <li><a href="../../pages/voters/addVoter.inc.php">New Voter</a></li>
+                                    <li><a href="../../pages/voters/addNewVoter.inc.php">New Voter</a></li>
                                     <li><a href="../../pages/voters/uploadVoter.inc.php">Upload voter(s)</a></li>
                                 </ul>
                             </li>
