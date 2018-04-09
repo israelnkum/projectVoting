@@ -6,6 +6,7 @@ require_once ('../dbConnection.php');
 if ($_POST) {
     $validator = array('success' => false,'messages' => array());
 //Retrieve the field values from our registration form.
+    $voteName = !empty($_POST['voteName']) ? trim($_POST['voteName']) : null;
     $fristName = !empty($_POST['fristName']) ? trim($_POST['fristName']) : null;
     $lastName = !empty($_POST['lastName']) ? trim($_POST['lastName']) : null;
     $otherName  = !empty($_POST['otherName']) ? trim($_POST['otherName']) : null;
@@ -30,10 +31,11 @@ if ($_POST) {
         $validator['success'] = false;
     }else {
         $sql = "INSERT INTO `nominees`
-        (firstName, lastName, otherName, postion, class, indexNumber) 
-        VALUES (:firstName, :lastName, :otherName, :postion,:class, :indexNumber)";
+        (votingName, firstName, lastName, otherName, postion, class, indexNumber) 
+        VALUES (:votingName, :firstName, :lastName, :otherName, :postion,:class, :indexNumber)";
 
         $stmt = $connection -> prepare($sql);
+        $stmt->bindValue(':votingName',$voteName);
         $stmt->bindValue(':firstName',$fristName);
         $stmt->bindValue(':lastName',$lastName);
         $stmt->bindValue(':otherName',$otherName);

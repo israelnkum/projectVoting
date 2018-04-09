@@ -31,7 +31,7 @@ include '../../includes/navs.inc.php';
                 <div class="card-box">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a role="button" class="btn btn-primary" href="votingType.php">Voting Name</a>
+                            <a role="button" class="btn btn-primary" href="votingType.php">Add New Nominee</a>
                         </div>
                     </div>
                     <hr>
@@ -46,7 +46,7 @@ include '../../includes/navs.inc.php';
                                         <div class="form-row form-material">
                                             <div class="col-md-12 mb-3">
                                                 <label for="fristName">First name</label>
-                                                <input type="text" class="form-control" id="fristName" name="fristName" value="<?php $_GET['VotingName'] ?>" placeholder="Enter First name" required>
+                                                <input type="text" class="form-control" id="fristName" name="fristName"  placeholder="Enter First name" required>
                                                 <div class="invalid-feedback">
                                                     First Name is required
                                                 </div>
@@ -98,8 +98,7 @@ include '../../includes/navs.inc.php';
                                             <?php
                                             echo '
                                             <div class="col-md-12 mb-3">
-                                                <label for="voteName">VoteName</label>
-                                                <input type="text" class="form-control" id="voteName" name="voteName" value="'.$selected.'" required>
+                                                <input type="hidden" class="form-control" id="voteName" name="voteName" value="'.$selected.'" required>
                                             </div>
                                             ';
                                             ?>

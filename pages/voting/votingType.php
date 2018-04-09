@@ -29,14 +29,10 @@ include '../../includes/navs.inc.php';
             </div>
         </div>
         <!-- end page title end breadcrumb -->
-
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card-box">
-
                     <div class="row">
-
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-title cardMainTitle" data-bgColor="blue">
