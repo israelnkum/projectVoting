@@ -1,8 +1,38 @@
 
-
 <?php
 include "../../includes/header.inc.php";
 include "../../includes/navs.inc.php";
+include "uploadVoter.code.php";
+$uploadVoters = new uploadVoter();
+if (isset($_POST['btn_upload'])) {
+    $fileName =$_FILES['file']['name'];
+    $fileExt = explode('.',$fileName);
+    $fileAcutalExt = strtolower(end($fileExt));
+
+    $allowed = array('csv');
+
+    if (!in_array($fileAcutalExt, $allowed)){
+        ?>
+      <script type="text/javascript">
+          window.location.assign("http://localhost/projectVoting/pages/voters/uploadVoter.inc.php?fileTypeError=".concat("Please Select a .csv File"));
+      </script>
+        <?php
+        }else{
+        $uploadVoters->import($_FILES['file']['tmp_name']);
+       // $uploadVoters->import($_FILES['file']['name']);
+    }
+
+/*
+    $fileExt = explode('.',$fileName);
+    $fileAcutalExt = strtolower(end($fileExt));
+
+    $allowed = array('csv');
+
+    if (!in_array($fileAcutalExt, $allowed)){
+        header("Location: uploadVoter.inc.php?fileTypeError=".urlencode("Please Select .csv File"));
+    }*/
+
+}
 ?>
 <div class="wrapper">
     <div class="container-fluid">
@@ -21,7 +51,11 @@ include "../../includes/navs.inc.php";
             </div>
         </div>
         <!-- end page title end breadcrumb -->
-
+        <div class="row">
+            <div class="col-md-6 offset-md-10">
+                <a role="button" href="addNewVoter.inc.php" class="btn btn-primary"><i class="ti ti-plus"></i> Add New Voter(s)</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
@@ -39,12 +73,28 @@ include "../../includes/navs.inc.php";
                                                 <?php echo $_GET['fileTypeError'];?>
                                             </div>
                                         <?php }?>
+
+
+                                        <?php if (isset($_GET['file_uploadSuccess'])) { ?>
+                                            <div class="alert alert-success alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <?php echo $_GET['file_uploadSuccess'];?>
+                                            </div>
+                                        <?php }?>
+
+
+                                        <?php if (isset($_GET['file_not_uploaded'])) { ?>
+                                            <div class="alert alert-danger alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                <?php echo $_GET['file_not_uploaded'];?>
+                                            </div>
+                                        <?php }?>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h1 class="display-6 text-danger">Note</h1>
                                             <p class="text-primary">1. Only .csv File Allowed</p>
-                                            <p class="text-primary">2. The File shoul Follow the Format Below</p>
+                                            <p class="text-primary">2. The File should Follow the Format Below</p>
 
                                             <div class="tablesaw table-responsive table-hover table-bordered" data-pattern="priority-columns">
                                                 <table  class="table text-dark  table-striped">
@@ -62,9 +112,9 @@ include "../../includes/navs.inc.php";
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <form action="../../validation/voters/uploadVoter.code.php" enctype="multipart/form-data" method="post">
+                                            <form enctype="multipart/form-data" action="uploadVoter.inc.php" method="post">
                                                 <div class="form-group m-t-30">
-                                                    <input type="file" name="selected_file" id="selected_file" class="form-control-file">
+                                                    <input type="file" name="file" id="file" class="form-control-file">
                                                 </div>
 
                                                 <div class="form-material">
@@ -86,8 +136,6 @@ include "../../includes/navs.inc.php";
 <!-- end wrapper -->
 
 <?php
-
 include '../../includes/footer.inc.php';
-
 ?>
 

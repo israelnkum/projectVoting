@@ -2636,58 +2636,6 @@ code {
 /* =============
    Alerts
 ============= */
-.alert-custom {
-  color: #02c0ce;
-  background-color: #eafdff;
-  border-color: #39f0fd;
-}
-
-.alert-primary {
-  color: #2d7bf4;
-  background-color: #e5effe;
-  border-color: #8eb8f9;
-}
-
-.alert-secondary {
-  color: #9a9a9a;
-  background-color: #f3f3f3;
-  border-color: #cdcdcd;
-}
-
-.alert-success {
-  color: #0acf97;
-  background-color: #f3fefb;
-  border-color: #49f6c5;
-}
-
-.alert-danger {
-  color: #f1556c;
-  background-color: #fef0f2;
-  border-color: #f9b3bd;
-}
-
-.alert-warning {
-  color: #f9bc0b;
-  background-color: #fffaeb;
-  border-color: #fbd76f;
-}
-
-.alert-info {
-  color: #4eb7eb;
-  background-color: #eef8fd;
-  border-color: #aadcf5;
-}
-
-.alert-light {
-  background-color: #f3f6f8;
-  border-color: #e3eaef;
-}
-
-.alert-dark {
-  color: #313a46;
-  background-color: #dce1e7;
-  border-color: #919fb2;
-}
 
 .jq-toast-single {
   padding: 15px;

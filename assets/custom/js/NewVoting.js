@@ -1,8 +1,8 @@
 
-var allVotingTable;
+var myVotingTable;
 $(document).ready(function() {
 
-    allVotingTable= $("#allVotingTable").DataTable({
+    myVotingTable= $("#myVotingTable").DataTable({
         retrieve: true,
         "ajax": "../../validation/voting/selectAllVoting.php",
         "order":[]

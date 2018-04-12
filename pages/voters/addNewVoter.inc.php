@@ -23,6 +23,11 @@ include "../../includes/navs.inc.php";
         <!-- end page title end breadcrumb -->
 
         <div class="row">
+            <div class="col-md-6 offset-md-10">
+                <a role="button" href="uploadVoter.inc.php" class="btn btn-primary"><i class="ti ti-upload"></i> Upload Voters</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
                     <div class="row">

@@ -1,5 +1,48 @@
 
-
+<!-- Popup Modal -->
+<div id="popModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Select Voting</h4>
+            </div>
+            <form class="needs-validation" method="post" action="http://localhost/projectVoting/pages/voting/newNominee.inc.php" novalidate>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3 form-material ">
+                            <label for="VotingName"></label>
+                            <select id="VotingName"  name="VotingName" class="custom-select form-control" required>
+                                <option value="">Select Voting Name</option>
+                                <?php
+                                include "../../validation/dbConnection.php";
+                                $sql = "SELECT * FROM new_voting";
+                                $stmt = $connection->prepare($sql);
+                                $stmt->execute();
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                    if ($row <0){
+                                        echo "<option value=''>No Positon for the Selected Voting</option>";
+                                    }else{
+                                        echo "<option value='" . $row['voting_name']."'>". $row['voting_name'] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                Voting Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- new Voting Name Modal ->
 
 <!-- Edit Voting modal -->
 <div class="modal fade" id="updateVotingInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -87,49 +130,37 @@
 <div class="modal fade" id="editNomineeInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <form method="post" action="../../validation/nominees/updateNomineeInfo.php" class="needs-validation form-material" id="updateNomineeForm" name="updateNomineeForm" novalidate>
+            <div class="modal-header edit_nominee_Info">
                 <h5 class="modal-title" id="exampleModalLabel">Update Nominee Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <div class="modal-body">
+            <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="card">
-                                <div class="card-title">
-                                    Image Upload
-                                </div>
                                 <div class="card-body">
-                                    <div class="text-center ">
-                                        <img class="img-circle"  style=" height: 150px; width: 150px;"  src="../../assets/images/profiledefault.png">
-                                    </div>
-                                    <hr>
-                                    <div class="col-md-12">
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-danger">Remove</button>
-                                        <button type="button" class="btn btn-success">Upload</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- col-md-4 -->
-
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-title">
-                                    Nominee Infomation
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="../../validation/nominees/updateNomineeInfo.php" class="needs-validation form-material" id="updateNomineeForm" name="updateNomineeForm" novalidate>
                                             <div class="col-md-4 m-t-20 mb-3">
                                                 <input type="hidden" class="form-control" id="editID" name="editID" placeholder="Enter First name" required>
                                             </div>
+
+                                        <div class="form-row text-center">
+                                            <div class="col-md-6 m-t-20 mb-3">
+                                                <div class="card">
+                                                    <div class="card-title text-center">
+                                                        Image
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <?php
+
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="form-row form-material">
                                             <div class="col-md-4 m-t-20 mb-3">
@@ -196,15 +227,12 @@
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-primary" name="btn_updateNomineeInfo">Save changes</button>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer edit_nominee_Info">
-                </div>
-
+            </form>
 
         </div>
     </div>
@@ -355,6 +383,10 @@
         </div>
     </div>
 </div><!-- Edit Voter Modal- -->
+
+
+
+
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -407,7 +439,7 @@
 
 
 <script src="../../assets/custom/js/voters.js"></script>
-<script src="../../assets/custom/js/NewVoting.js"></script>
+<script src="../../assets/custom/js/addNewVoting.js"></script>
 <script src="../../assets/custom/js/addNewPosition.js"></script>
 <script src="../../assets/custom/js/newNominee.js"></script>
 
@@ -447,6 +479,18 @@
         format:'Y-m-d',
         weeks:true
     });
+
+    $("#dateOfBirth").datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        weeks:true
+    });
+    $("#editDateOfBirth").datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        weeks:true
+    });
+
 </script>
 </body>
 </html>

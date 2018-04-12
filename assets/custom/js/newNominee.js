@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 
         return false;
-    });// new user form
+    });/// new user form
 });//document .ready function
 
 
@@ -67,9 +67,7 @@ $(document).ready(function() {
  */
 function updateNomineeInformation(id) {
     $("#c_normId").remove();
-
     if(id){
-
         // fetch Data for the hophonesteler with the current selected id
         $.ajax({
             url:'../../validation/nominees/getNomineeID.php',
@@ -77,7 +75,6 @@ function updateNomineeInformation(id) {
             data :{nom_id :id},
             dataType : 'json',
             success:function (response) {
-
                 $("#editID").val(response.nominee_id);
                 $("#editFristName").val(response.firstName);
                 $("#editLastName").val(response.lastName);
@@ -85,6 +82,8 @@ function updateNomineeInformation(id) {
                 $("#editNomineePosition").val(response.postion);
                 $("#editNomineeClass").val(response.class);
                 $("#editIndexNumber").val(response.indexNumber);
+
+                $('.edit_nominee_Info').append("<input type='text' name='c_normId' id='c_normId' value='"+response.nominee_id+"'>");
 
                 // Update Data
                 $("#updateNomineeForm").unbind('submit').bind('submit',function () {
@@ -145,6 +144,7 @@ function updateNomineeInformation(id) {
     }else{
         alert("Error: Please Refresh This Page");
     }
+
 }// update user information -->Function
 
 

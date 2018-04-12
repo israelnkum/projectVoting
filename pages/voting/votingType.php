@@ -9,8 +9,18 @@ include '../../includes/navs.inc.php';
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row">
+            <div class="col-md-12 m-t-10 text-center">
+                <?php if (isset($_GET['msg'])) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <?php echo $_GET['msg'];?>
+                    </div>
+                <?php }?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-6 offset-md-3 m-t-20">
-                <button class="btn btn-primary btn-lg btn-block">
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#popModal">
                     Add new Nominee
                 </button>
             </div>
@@ -71,50 +81,6 @@ include '../../includes/navs.inc.php';
     </div> <!-- end container -->
 </div>
 
-<!-- Popup Modal -->
-<div id="popModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Select Voting</h4>
-            </div>
-            <form class="needs-validation" method="post" action="newNominee.inc.php" novalidate>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-3 form-material ">
-                            <label for="VotingName"></label>
-                            <select id="VotingName"  name="VotingName" class="custom-select form-control" required>
-                                <option value="">Select Voting Name</option>
-                                <?php
-                                include "../../validation/dbConnection.php";
-                                $sql = "SELECT * FROM new_voting";
-                                $stmt = $connection->prepare($sql);
-                                $stmt->execute();
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                                    if ($row <0){
-                                        echo "<option value=''>No Positon for the Selected Voting</option>";
-                                    }else{
-                                        echo "<option value='" . $row['voting_name']."'>". $row['voting_name'] . "</option>";
-                                    }
-                                }
-                                ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                Voting Name is required
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 
@@ -123,29 +89,5 @@ include '../../includes/navs.inc.php';
 include '../../includes/footer.inc.php';
 
 ?>
-<script>
-$(document).ready(function () {
-    $("#popModal").modal({
-        backdrop:'static',
-        keyboard:false
-    });
-});
-    $('#popModal').modal({
-        modal: true,
-        autoOpen: false,
-        autoClose:false
-    });
 
-    $('select').change(function () {
-        if ($(this).val() === "") {
-            $("#popModal").modal('show');
-
-
-        }else {
-            // $("#popModal").modal('hide');
-        }
-    });
-
-
-</script>
 
