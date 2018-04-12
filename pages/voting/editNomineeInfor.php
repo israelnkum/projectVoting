@@ -1,9 +1,11 @@
 <?php
+session_start();
 include '../../validation/dbConnection.php';
 include '../../includes/header.inc.php';
 include '../../includes/navs.inc.php';
-if (isset($_POST['btn_nomineeInfo'])) {
-    $nominee_id = $_POST['user_id'];
+if (isset($_GET['btn_nomineeInfo'])) {
+    $name = $_GET['votename'];
+    $nominee_id = $_GET['user_id'];
     $nomImage = "SELECT  * FROM `nominees` WHERE `nominee_id` = :currentNomineeId";
     $stmt = $connection->prepare($nomImage);
     //Bind the provided username to our prepared statement.
@@ -11,6 +13,7 @@ if (isset($_POST['btn_nomineeInfo'])) {
     //Execute.
     $stmt->execute();
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $_SESSION['img'] = $row['imageName'];
         echo '
             <div class="wrapper">
     <div class="container-fluid">

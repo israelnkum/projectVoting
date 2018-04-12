@@ -10,8 +10,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $actionBtn = '
     <div class="row">
     <div class="col-md-2">
-    <form action="../../pages/voting/editNomineeInfor.php" method="post">
+    <form action="../../pages/voting/editNomineeInfor.php" method="get">
     <input type="hidden" name="user_id" value="' .$row['nominee_id'].'">
+    <input type="hidden" name="votename" value="' .$row['imageName'].'">
+
     <button type="submit" name="btn_nomineeInfo" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</button>    
     </form>
     

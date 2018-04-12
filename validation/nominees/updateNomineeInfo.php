@@ -1,27 +1,29 @@
 
 <?php
+session_start();
 require_once ('../dbConnection.php');
 // if button is actually clicked
 
 if (isset($_POST['btn_update'])){
+    $nom_id = !empty($_POST['nom_id']) ? trim($_POST['nom_id']) : null;
+    $editVotingName = !empty($_POST['editVotingName']) ? trim($_POST['editVotingName']) : null;
+    $editFristName = !empty($_POST['editFristName']) ? trim($_POST['editFristName']) : null;
+    $editLastName = !empty($_POST['editLastName']) ? trim($_POST['editLastName']) : null;
+    $editOtherName  = !empty($_POST['editOtherName']) ? trim($_POST['editOtherName']) : null;
+    $editDateOfBirth = !empty($_POST['editDateOfBirth']) ? trim($_POST['editDateOfBirth']) : null;
+    $editHomeTown = !empty($_POST['editHomeTown']) ? trim($_POST['editHomeTown']) : null;
+    $editRegion  = !empty($_POST['editRegion']) ? trim($_POST['editRegion']) : null;
+    $editHomeAddress = !empty($_POST['editHomeAddress']) ? trim($_POST['editHomeAddress']) : null;
+    $editTelePhone  = !empty($_POST['editTelePhone']) ? trim($_POST['editTelePhone']) : null;
+    $editEmailAddress = !empty($_POST['editEmailAddress']) ? trim($_POST['editEmailAddress']) : null;
+    $editNomineeClass  = !empty($_POST['editNomineeClass']) ? trim($_POST['editNomineeClass']) : null;
+    $editIndexNumber  = !empty($_POST['editIndexNumber']) ? trim($_POST['editIndexNumber']) : null;
+    $edit_cgpa = !empty($_POST['edit_cgpa']) ? trim($_POST['edit_cgpa']) : null;
+    $editNomineePosition  = !empty($_POST['editNomineePosition']) ? trim($_POST['editNomineePosition']) : null;
+    $editPreviousPositon  = !empty($_POST['$editPreviousPositon']) ? trim($_POST['$editPreviousPositon']) : null;
+    $img_name =$editVotingName.$editNomineePosition.$editIndexNumber;
     if ($_FILES["nomineeImage"]["name"] !== ""){
         //Retrieve the field values from our registration form.
-        $nom_id = !empty($_POST['nom_id']) ? trim($_POST['nom_id']) : null;
-        $editVotingName = !empty($_POST['editVotingName']) ? trim($_POST['editVotingName']) : null;
-        $editFristName = !empty($_POST['editFristName']) ? trim($_POST['editFristName']) : null;
-        $editLastName = !empty($_POST['editLastName']) ? trim($_POST['editLastName']) : null;
-        $editOtherName  = !empty($_POST['editOtherName']) ? trim($_POST['editOtherName']) : null;
-        $editDateOfBirth = !empty($_POST['editDateOfBirth']) ? trim($_POST['editDateOfBirth']) : null;
-        $editHomeTown = !empty($_POST['editHomeTown']) ? trim($_POST['editHomeTown']) : null;
-        $editRegion  = !empty($_POST['editRegion']) ? trim($_POST['editRegion']) : null;
-        $editHomeAddress = !empty($_POST['editHomeAddress']) ? trim($_POST['editHomeAddress']) : null;
-        $editTelePhone  = !empty($_POST['editTelePhone']) ? trim($_POST['editTelePhone']) : null;
-        $editEmailAddress = !empty($_POST['editEmailAddress']) ? trim($_POST['editEmailAddress']) : null;
-        $editNomineeClass  = !empty($_POST['editNomineeClass']) ? trim($_POST['editNomineeClass']) : null;
-        $editIndexNumber  = !empty($_POST['editIndexNumber']) ? trim($_POST['editIndexNumber']) : null;
-        $edit_cgpa = !empty($_POST['edit_cgpa']) ? trim($_POST['edit_cgpa']) : null;
-        $editNomineePosition  = !empty($_POST['editNomineePosition']) ? trim($_POST['editNomineePosition']) : null;
-        $editPreviousPositon  = !empty($_POST['$editPreviousPositon']) ? trim($_POST['$editPreviousPositon']) : null;
 
 
         $file = $_FILES['nomineeImage'];
@@ -52,7 +54,8 @@ if (isset($_POST['btn_update'])){
         otherName=:otherName,dateOfBirth=:dateOfBirth,homeTown=:homeTown,
         region=:region,homeAddress=:homeAddress,telephone=:telephone,
         email=:email,`class`=:class,`indexNumber`=:indexNumber,`CGPA`=:CGPA,
-        `postion`=:postion,`postionHeld`=:postionHeld WHERE nominee_id=:nominee_id
+        `postion`=:postion,`postionHeld`=:postionHeld,imageName = :imageName,
+        image=:image WHERE nominee_id=:nominee_id
     ";
 
                     $stmt = $connection -> prepare($sql);
@@ -71,6 +74,8 @@ if (isset($_POST['btn_update'])){
                     $stmt->bindValue(':CGPA',$edit_cgpa);
                     $stmt->bindValue(':postion',$editNomineePosition);
                     $stmt->bindValue(':postionHeld',$editPreviousPositon);
+                    $stmt->bindValue(':imageName',$img_name);
+                    $stmt->bindValue(':image',1);
                     $stmt->bindValue(':nominee_id',$nom_id);
 
                     $result = $stmt->execute();
@@ -114,27 +119,16 @@ if (isset($_POST['btn_update'])){
         }
     }else{
 
-        //Retrieve the field values from our registration form.
-        $nom_id = !empty($_POST['nom_id']) ? trim($_POST['nom_id']) : null;
-        $editVotingName = !empty($_POST['editVotingName']) ? trim($_POST['editVotingName']) : null;
-        $editFristName = !empty($_POST['editFristName']) ? trim($_POST['editFristName']) : null;
-        $editLastName = !empty($_POST['editLastName']) ? trim($_POST['editLastName']) : null;
-        $editOtherName  = !empty($_POST['editOtherName']) ? trim($_POST['editOtherName']) : null;
-        $editDateOfBirth = !empty($_POST['editDateOfBirth']) ? trim($_POST['editDateOfBirth']) : null;
-        $editHomeTown = !empty($_POST['editHomeTown']) ? trim($_POST['editHomeTown']) : null;
-        $editRegion  = !empty($_POST['editRegion']) ? trim($_POST['editRegion']) : null;
-        $editHomeAddress = !empty($_POST['editHomeAddress']) ? trim($_POST['editHomeAddress']) : null;
-        $editTelePhone  = !empty($_POST['editTelePhone']) ? trim($_POST['editTelePhone']) : null;
-        $editEmailAddress = !empty($_POST['editEmailAddress']) ? trim($_POST['editEmailAddress']) : null;
-        $editNomineeClass  = !empty($_POST['editNomineeClass']) ? trim($_POST['editNomineeClass']) : null;
-        $editIndexNumber  = !empty($_POST['editIndexNumber']) ? trim($_POST['editIndexNumber']) : null;
-        $edit_cgpa = !empty($_POST['edit_cgpa']) ? trim($_POST['edit_cgpa']) : null;
-        $editNomineePosition  = !empty($_POST['editNomineePosition']) ? trim($_POST['editNomineePosition']) : null;
-        $editPreviousPositon  = !empty($_POST['$editPreviousPositon']) ? trim($_POST['$editPreviousPositon']) : null;
 
-        $fileNameNew = $editVotingName.$editNomineePosition.$editIndexNumber.".jpg";
-        $fileDestination = '../../assets/nomineeUploads/'.$fileNameNew;
+        $sql = "SELECT * FROM nominees WHERE imageName =:imageName";
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':imageName',$_SESSION['img']);
+        $stmt->execute();
+        if ($opt = $stmt->fetch(PDO::FETCH_ASSOC)){
+             $opt['imageName'];
+        }
 
+         rename("../../assets/nomineeUploads/".$_SESSION['img'].".jpg","../../assets/nomineeUploads/".$editVotingName.$editNomineePosition.$editIndexNumber.".jpg");
         $validator = array('success' => false,'messages' => array());
         $sql= "
         UPDATE nominees SET 
@@ -142,7 +136,8 @@ if (isset($_POST['btn_update'])){
         otherName=:otherName,dateOfBirth=:dateOfBirth,homeTown=:homeTown,
         region=:region,homeAddress=:homeAddress,telephone=:telephone,
         email=:email,`class`=:class,`indexNumber`=:indexNumber,`CGPA`=:CGPA,
-        `postion`=:postion,`postionHeld`=:postionHeld WHERE nominee_id=:nominee_id
+        `postion`=:postion,`postionHeld`=:postionHeld,imageName = :imageName
+         WHERE nominee_id=:nominee_id
     ";
 
         $stmt = $connection -> prepare($sql);
@@ -161,6 +156,7 @@ if (isset($_POST['btn_update'])){
         $stmt->bindValue(':CGPA',$edit_cgpa);
         $stmt->bindValue(':postion',$editNomineePosition);
         $stmt->bindValue(':postionHeld',$editPreviousPositon);
+        $stmt->bindValue(':imageName',$img_name);
         $stmt->bindValue(':nominee_id',$nom_id);
 
         $result = $stmt->execute();
@@ -172,6 +168,7 @@ if (isset($_POST['btn_update'])){
             header("Location: ../../pages/voting/votingType.php?msg=".urlencode("Oops! Something Went wrong. Try again in a few minutes"));
             exit();
         }// else --> username validation
+
 
 
     }

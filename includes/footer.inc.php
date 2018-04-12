@@ -439,10 +439,9 @@
 
 
 <script src="../../assets/custom/js/voters.js"></script>
-<script src="../../assets/custom/js/addNewVoting.js"></script>
 <script src="../../assets/custom/js/addNewPosition.js"></script>
 <script src="../../assets/custom/js/newNominee.js"></script>
-
+<script src="../../assets/custom/js/NewVoting.js"></script>
 
 <script src="../../assets/js/jquery/jquery.core.js"></script>
 <script src="../../assets/js/jquery/jquery.app.js"></script>

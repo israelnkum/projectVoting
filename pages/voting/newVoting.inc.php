@@ -89,7 +89,7 @@ include "../../includes/navs.inc.php";
                                 <div class="card-body">
                                     <div class="table-rep-plugin">
                                         <div class="tablesaw table-responsive table-hover table-bordered" data-pattern="priority-columns">
-                                            <table id="allVotingTable" class="table text-dark  table-striped">
+                                            <table id="myVotingTable" class="table text-dark  table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th data-priority="1">#</th>
