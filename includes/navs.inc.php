@@ -84,7 +84,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="dripicons-box"></i>Cast Voting</a>
+                        <a href="../../pages/castVoting/selectVotingType.php"><i class="dripicons-box"></i>Cast Voting</a>
                     </li>
 
                     <li class="has-submenu">

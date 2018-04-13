@@ -64,7 +64,7 @@ if (isset($_POST['btn_uploadImage'])){
     $cgpa = !empty($_POST['cgpa']) ? trim($_POST['cgpa']) : null;
     $nomineePosition  = !empty($_POST['nomineePosition']) ? trim($_POST['nomineePosition']) : null;
     $previousPositon  = !empty($_POST['previousPositon']) ? trim($_POST['previousPositon']) : null;
-
+    $imageName =$voteName.$nomineePosition.$indexNumber;
 
     $file = $_FILES['nomineeImage'];
 
@@ -83,7 +83,7 @@ if (isset($_POST['btn_uploadImage'])){
         if ($fileError === 0){
             if ($fileSize < 1000000){
                 //$fileNameNew = "profile".$id.".".$fileAcutalExt;
-                $fileNameNew = $nomineePosition.$indexNumber.".".$fileAcutalExt;
+                $fileNameNew = $voteName.$nomineePosition.$indexNumber.".".$fileAcutalExt;
                 $fileDestination = '../../assets/nomineeUploads/'.$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);
 
@@ -107,11 +107,11 @@ if (isset($_POST['btn_uploadImage'])){
                     $sql = "INSERT INTO nominees
                   (votingName, firstName, lastName, otherName, dateOfBirth,
                    homeTown, region, homeAddress, telephone, email, class,
-                  indexNumber, CGPA, postion, postionHeld, image)
+                  indexNumber, CGPA, postion, postionHeld, image,imageName)
                   VALUES 
                   (:votingName, :firstName, :lastName, :otherName,:dateOfBirth,
                    :homeTown, :region,:homeAddress, :telephone, :email,:class, 
-                   :indexNumber, :CGPA, :postion, :postionHeld, :image)";
+                   :indexNumber, :CGPA, :postion, :postionHeld, :image, :imageName)";
 
                     $stmt = $connection -> prepare($sql);
                     $stmt->bindValue(':votingName',$voteName);
@@ -130,6 +130,7 @@ if (isset($_POST['btn_uploadImage'])){
                     $stmt->bindValue(':postion',$nomineePosition);
                     $stmt->bindValue(':postionHeld',$previousPositon);
                     $stmt->bindValue(':image','1');
+                    $stmt->bindValue(':imageName',$imageName);
 
                     $result = $stmt->execute();
                     if($result ===true){

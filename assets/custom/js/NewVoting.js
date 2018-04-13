@@ -38,7 +38,7 @@ $(document).ready(function() {
                         });
                         $("#addNewVotingForm")[0].reset();
                         $("#addNewVotingForm").removeClass();
-                        allVotingTable.ajax.reload(false);
+                        myVotingTable.ajax.reload(false);
 
                     }else{
                         swal({
@@ -122,7 +122,7 @@ function updateVotingInfo(id) {
                                     $('body').removeClass('modal-open');
                                     $('.modal-backdrop').remove();
 
-                                    allVotingTable.ajax.reload(false);
+                                    myVotingTable.ajax.reload(false);
 
                                 }else{
                                     swal({
@@ -175,7 +175,7 @@ function deleteVoting(id) {
 
 
                         // refresh table after deleting
-                        allVotingTable.ajax.reload(false);
+                        myVotingTable.ajax.reload(false);
 
 
                     }else {

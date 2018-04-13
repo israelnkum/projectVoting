@@ -17,6 +17,8 @@
     <link href="../../assets/css/custom/style.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/css/custom/styles.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/css/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/bootstrap/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
     <script src="../../assets/js/jquery/modernizr.min.js"></script>
 
     <link rel="stylesheet" href="../../assets/dateTime/jquery.datetimepicker.css">
