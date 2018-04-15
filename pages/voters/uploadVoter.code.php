@@ -14,17 +14,39 @@ class uploadVoter extends mysqli
 
     public function import($file){
 
-            $this->state_csv = false;
+            $this->state_csv=false;
+           // $this->update_csv = false;
             $file = fopen($file,'r');
             while ($row = fgetcsv($file)){
-                $value = "'".implode("','",$row)."'";
-                $sql = "INSERT INTO `voters`(`firstName`, `lastName`, `otherName`, `class`, `indexNumber`, `voterPassword`) 
-                        VALUES (".$value.")";
-                if ($this->query($sql)){
-                    $this->state_csv=true;
-                }else{
-                    $this->state_csv=false;
+               // $value = "'".implode("','",$row)."'";
+//                echo "<pre>";
+//                print_r($row);
+//                echo "</pre>";
+                $sql = "SELECT indexNumber  FROM voters WHERE indexNumber = '$row[4]'";
+                $result = $this->query($sql);
+                $resultCheck = mysqli_num_rows($result);
+                if($resultCheck > 0){
+                    $hashPassword = password_hash($row[5], PASSWORD_BCRYPT, array("cost" => 12));
+                    $update = "UPDATE voters SET 
+                  firstName ='$row[0]',lastName='$row[1]',otherName='$row[2]',
+                  class='$row[3]',indexNumber='$row[4]',voterPassword='$hashPassword'
+                   WHERE indexNumber='$row[4]'";
+                   if ( $this->query($update)){
+                       $this->state_csv=true;
+                   }else{
+                       $this->state_csv=false;
+                   }
+                }else {
+                    $hashPassword = password_hash($row[5], PASSWORD_BCRYPT, array("cost" => 12));
+                    $sql = "INSERT INTO voters(firstName, lastName, otherName, class, indexNumber, voterPassword)
+                        VALUES ('$row[0]','$row[1]','$row[2]','$row[3]','$row[4]','$hashPassword')";
+                    if ($this->query($sql)){
+                        $this->state_csv=true;
+                    }else{
+                        $this->state_csv=false;
+                    }
                 }
+
 
             }//while
 

@@ -16,15 +16,14 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
              echo '
-                <form method="post" action="../../validation/castVoting/checkVotingType.php" class="needs-validation form-material" novalidate>
-                    <button class="btn btn-info btn-block" type="submit" id="btn_CheckVoting" name="btn_CheckVoting" value="'.$row['voting_name'].'">
+                <form method="post" action="../../validation/castVoting/Presidents.php" class="needs-validation form-material" novalidate>
+                    <button class="btn btn-info btn-block" type="submit" id="btn_CheckVoting" name="btn_CheckVoting" value="' .$row['voting_name'].'">
                         '.$row['voting_name'].'
                     </button>
                     <hr>
                 </form>';
             }
             ?>
-
         </div>
     </div>
 </div><!-- end column 4 -->

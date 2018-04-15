@@ -84,7 +84,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="../../pages/castVoting/selectVotingType.php"><i class="dripicons-box"></i>Cast Voting</a>
+                        <a href="../../index.php"><i class="dripicons-box"></i>Cast Voting</a>
                     </li>
 
                     <li class="has-submenu">
@@ -101,6 +101,10 @@
                                 </ul>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="../../pages/users/addNewUser.inc.php"><i class="icon icon-user"></i>Admin</a>
                     </li>
                 </ul>
                 <!-- End navigation menu -->

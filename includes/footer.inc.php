@@ -384,15 +384,162 @@
     </div>
 </div><!-- Edit Voter Modal- -->
 
+<!-- New User Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="../../validation/users/addNewUser.php" id="newUserForm" class="needs-validation form-material"  novalidate>
+                    <div class="form-row form-material">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"  placeholder="First name" required>
+                            <div class="invalid-feedback">
+                                First Name is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                            <div class="invalid-feedback">
+                                Last Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-material">
+                        <div class="col-md-12 mb-3">
+                            <label for="userName">Username</label>
+                            <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" required>
+                            <div class="invalid-feedback">
+                                Username is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-material">
+                        <div class="col-md-12 mb-3">
+                            <label for="userMail">Email</label>
+                            <input type="email" class="form-control" id="userMail" name="userMail" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                Email is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row form-material">
+                        <div class="col-md-12 mb-3">
+                            <label for="userPassword">Password</label>
+                            <input type="password" class="form-control" id="userPassword" name="userPassword"  placeholder="Password" required>
+                            <div class="invalid-feedback">
+                                Password is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!--End New user Modal -->
 
 
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-account-edit"></i> Edit User Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="../../validation/users/editUserInfo.php" id="editUserForm" class="needs-validation form-material"  novalidate>
+                    <div class="form-row form-material">
+                        <div class="col-md-6 mb-3">
+                            <label for="editFirstName">First name</label>
+                            <input type="text" class="form-control" id="editFirstName" name="editFirstName"  placeholder="First name" required>
+                            <div class="invalid-feedback">
+                                First Name is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="editlastName">Last name</label>
+                            <input type="text" class="form-control" id="editlastName" name="editlastName" placeholder="Last Name" required>
+                            <div class="invalid-feedback">
+                                Last Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-material">
+                        <div class="col-md-12 mb-3">
+                            <label for="editUserName">Username</label>
+                            <input type="text" class="form-control" id="editUserName" name="editUserName" placeholder="Username" required>
+                            <div class="invalid-feedback">
+                                Username is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-material">
+                        <div class="col-md-12 mb-3">
+                            <label for="editUserMail">Email</label>
+                            <input type="email" class="form-control" id="editUserMail" name="editUserMail" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                Email is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row form-material">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="editUserId" name="editUserId"  placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary btn-block" type="submit">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!--End Edit user Modal -->
+
+<!-- Delete User Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fi fi-trash"></i> Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Do you really Want to Delete This Admin</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="btn_deleteUser" id="btn_deleteUser" class="btn btn-primary">Delete</button>
+            </div>
+        </div>
+    </div>
+</div><!--Delete user Modal -->
 
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                2018 © Highdmin. - Coderthemes.com
+                2018 © iTSU Department
             </div>
         </div>
     </div>
@@ -433,6 +580,7 @@
 <!-- Dashboard Init -->
 <script src="../../assets/js/jquery/jquery.dashboard.init.js"></script>
 <script src="../../assets/dateTime/jquery.datetimepicker.full.js"></script>
+<script src="../../assets/js/jquery/jquery.timepicker.min.js"></script>
 <script src="../../assets/dataTables/datatables.min.js"></script>
 <!-- App js -->
 <script src="../../assets/js/jquery/sweetalert.min.js"></script>
@@ -442,6 +590,7 @@
 <script src="../../assets/custom/js/NewVoting.js"></script>
 <script src="../../assets/custom/js/addNewPosition.js"></script>
 <script src="../../assets/custom/js/newNominee.js"></script>
+<script src="../../assets/custom/js/users.js"></script>
 
 
 <script src="../../assets/js/jquery/jquery.core.js"></script>
@@ -455,25 +604,29 @@
     });
     $("#startingTime").datetimepicker({
         datepicker:false,
-        format:'h:i',
+        format:"h:i a",
+        validateOnBlur: false,
         step:5
     });
 
     $("#endingTime").datetimepicker({
         datepicker:false,
-        format:'h:i',
+        format:"h:i a",
+        validateOnBlur: false,
         step:5
     });
 
     $("#editStartingTime").datetimepicker({
         datepicker:false,
-        format:'h:i',
+        format:"h:i a",
+        validateOnBlur: false,
         step:5
     });
 
     $("#editEndingTime").datetimepicker({
         datepicker:false,
-        format:'h:i',
+        format:"h:i a",
+        validateOnBlur: false,
         step:5
     });
 

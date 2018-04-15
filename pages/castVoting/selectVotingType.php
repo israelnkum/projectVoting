@@ -1,7 +1,7 @@
 
 <?php
 include '../../includes/header.inc.php';
-include '../../includes/navs.inc.php';
+include '../../includes/voterNavs.inc.php';
 ?>
 
 <div class="wrapper">

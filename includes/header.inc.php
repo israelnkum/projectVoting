@@ -1,3 +1,7 @@
+<?php
+session_start();
+//require_once ("../../validation/authentication/checkLogin.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +22,7 @@
     <link href="../../assets/css/custom/styles.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/css/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/bootstrap/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
+<link href="../../assets/css/jquery.timepicker.min.css">
     <script src="../../assets/js/jquery/modernizr.min.js"></script>
 
     <link rel="stylesheet" href="../../assets/dateTime/jquery.datetimepicker.css">

@@ -1,25 +1,30 @@
 
-var allVotersTable;
+
+var usersTable;
 $(document).ready(function() {
 
-    allVotersTable= $("#allVotersTable").DataTable({
-        retrieve: true,
-        "ajax": "../../validation/voters/selectAllVoters.php",
+    usersTable= $("#usersTable").DataTable({
+
+        "ajax": "../../validation/users/selectUsers.php",
         "order":[]
     });
+    $("#btnAddNewUser").on('click',function () {
+        $("#newUserForm").removeClass();
+        $("#newUserForm")[0].reset();
+    });
 
-    $("#newVoterForm").unbind('submit').bind('submit',function () {
+    $("#newUserForm").unbind('submit').bind('submit',function () {
         var form = $(this);
         //validation
-        var voterFirstName = $("#voterFirstName").val();
-        var voterLastName = $("#voterLastName").val();
-        var voterClass = $("#voterClass").val();
-        var voterIndexNumber = $("#voterIndexNumber").val();
-        var voterPassword = $("#voterPassword").val();
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var userName = $("#userName").val();
+        var userMail = $("#userMail").val();
+        var userPassword = $("#userPassword").val();
 
 
 
-        if (voterFirstName  && voterLastName  && voterIndexNumber  && voterPassword && voterClass){
+        if (lastName  && userName  && userMail  && userPassword && firstName){
             //submit the form to server
 
             $.ajax({
@@ -34,18 +39,19 @@ $(document).ready(function() {
 
                         swal({
                             title: "Success",
-                            text: "Voter Added Successfully",
+                            text: "User Added Successfully",
                             icon: "success",
                             button:true
                         });
-                        $("#newVoterForm")[0].reset();
-                        $("#newVoterForm").removeClass();
-                        allVotersTable.ajax.reload(false);
+                        $("#newUserForm")[0].reset();
+                        $("#newUserForm").removeClass();
+                        usersTable.ajax.reload(false);
 
                     }else{
+                        $("#deleteUserModal").modal('hide');
                         swal({
                             title: "Error",
-                            text: "Voter Already Exit",
+                            text: "User Already Exit",
                             icon: "warning",
                             button:true
                         });
@@ -53,49 +59,42 @@ $(document).ready(function() {
                 }//success,
             });//ajax submit
         }// if
-
-
         return false;
     });// new user form
 });//document .ready function
 
 
-
-/*
-*Update Voting information
- */
-function updateVoterInfor(id) {
+function editUserInfo(id) {
     $("#c_normId").remove();
 
     if(id){
 
         // fetch Data for the hophonesteler with the current selected id
         $.ajax({
-            url:'../../validation/voters/getVoterId.php',
+            url:'../../validation/users/getUserId.php',
             type : 'post',
-            data :{c_vote_id :id},
+            data :{user_id :id},
             dataType : 'json',
             success:function (response) {
 
-                $("#editVoterID").val(response.voter_id);
-                $("#editVoterFirstName").val(response.firstName);
-                $("#editVoterLastName").val(response.lastName);
-                $("#editVoterOtherName").val(response.otherName);
-                $("#editVoterClass").val(response.class);
-                $("#editVoterIndexNumber").val(response.indexNumber);
+                $("#editUserId").val(response.users_id);
+                $("#editUserName").val(response.userName);
+                $("#editlastName").val(response.lastName);
+                $("#editFirstName").val(response.firstName);
+                $("#editUserMail").val(response.email);
 
                 // Update Data
-                $("#editVoterForm").unbind('submit').bind('submit',function () {
+                $("#editUserForm").unbind('submit').bind('submit',function () {
                     var form = $(this);
 
                     //validation
-                    var editVoterFirstName = $("#editVoterFirstName").val();
-                    var editVoterLastName = $("#editVoterLastName").val();
-                    var editVoterOtherName = $("#editVoterOtherName").val();
-                    var editVoterClass = $("#editVoterClass").val();
-                    var editVoterIndexNumber = $("#editVoterIndexNumber").val();
 
-                    if (editVoterFirstName && editVoterLastName && editVoterOtherName && editVoterClass && editVoterIndexNumber) {
+                    var editUserName = $("#editUserName").val();
+                    var editlastName = $("#editlastName").val();
+                    var editFirstName = $("#editFirstName").val();
+                    var editUserMail = $("#editUserMail").val();
+
+                    if (editUserName && editlastName && editFirstName && editUserMail) {
                         //submit the form to server
                         $.ajax({
                             url :form.attr('action'),
@@ -106,7 +105,7 @@ function updateVoterInfor(id) {
                                 //     $(".invalid-feedback").removeClass('has-error');
                                 if(response.success === true){
                                     //close the modal after deleting
-                                    $("#editVoterModal").modal('hide');
+                                    $("#editUserModal").modal('hide');
 
                                     swal({
                                         title: "Success",
@@ -118,7 +117,7 @@ function updateVoterInfor(id) {
                                     $('body').removeClass('modal-open');
                                     $('.modal-backdrop').remove();
 
-                                    allVotersTable.ajax.reload(false);
+                                    usersTable.ajax.reload(false);
 
                                 }else{
                                     swal({
@@ -142,43 +141,36 @@ function updateVoterInfor(id) {
 }// update user information -->Function
 
 
-
-
-
-
-/*
-* Delete hostelers
- */
-function deleteVoterInfo(id) {
+function deleteUser(id) {
     if(id){
         //click on delete button
-        $("#btnDeleteVoter").unbind('click').bind('click',function () {
+        $("#btn_deleteUser").unbind('click').bind('click',function () {
             $.ajax({
-                url:'../../validation/voters/deleteVoter.php',
+                url:'../../validation/users/deleteUser.php',
                 type :'post',
-                data :{vote_id :id},
+                data :{user_id :id},
                 dataType : 'json',
                 success:function (response) {
                     // $("#deleteVotingModal").modal('hide');
                     if (response.success === true){
-                        $("#deleteVoterModal").modal('hide');
+                        $("#deleteUserModal").modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
                         swal({
                             title: "success",
-                            text: "Voter Deleted Successfully",
+                            text: "User Deleted Successfully",
                             icon: "success",
                             button:true
                         });
 
 
                         // refresh table after deleting
-                        allVotersTable.ajax.reload(false);
+                        usersTable.ajax.reload(false);
 
 
                     }else {
                         //close the modal after deleting
-                        $("#deleteVoterModal").modal('hide');
+                        $("#deleteUserModal").modal('hide');
 
 
                         swal({
@@ -193,6 +185,5 @@ function deleteVoterInfo(id) {
         });//click on delete button
     }//if
 }// delete user Function
-
 
 

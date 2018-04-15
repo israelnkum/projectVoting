@@ -30,6 +30,7 @@ if ($_POST) {
     if($row['num'] > 0){
         $validator['success'] = false;
     }else {
+        $hashPassword = password_hash($voterPassword, PASSWORD_BCRYPT, array("cost" => 12));
         $sql = "INSERT INTO voters
         (firstName, lastName, otherName, class, indexNumber, voterPassword) 
         VALUES
@@ -41,7 +42,7 @@ if ($_POST) {
         $stmt->bindValue(':otherName',$voterOtherName);
         $stmt->bindValue(':class',$voterClass);
         $stmt->bindValue(':indexNumber',$voterIndexNumber);
-        $stmt->bindValue(':voterPassword',$voterIndexNumber);
+        $stmt->bindValue(':voterPassword',$hashPassword);
 
 
         $result = $stmt->execute();

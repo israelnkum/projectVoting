@@ -59,7 +59,7 @@ include '../../includes/navs.inc.php';
                                                 <option value="">Select Position</option>
                                                 <option value="President">President</option>
                                                 <option value="Vice President">Vice President</option>
-                                                <option value="Secetary">Secretary</option>
+                                                <option value="Secretary">Secretary</option>
                                                 <option value="Organizer">Organizer</option>
                                                 <option value="Asst. Organizer">Asst. Organizer</option>
                                                 <option value="Treasure">Treasure</option>

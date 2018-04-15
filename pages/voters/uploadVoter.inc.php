@@ -21,18 +21,7 @@ if (isset($_POST['btn_upload'])) {
         $uploadVoters->import($_FILES['file']['tmp_name']);
        // $uploadVoters->import($_FILES['file']['name']);
     }
-
-/*
-    $fileExt = explode('.',$fileName);
-    $fileAcutalExt = strtolower(end($fileExt));
-
-    $allowed = array('csv');
-
-    if (!in_array($fileAcutalExt, $allowed)){
-        header("Location: uploadVoter.inc.php?fileTypeError=".urlencode("Please Select .csv File"));
-    }*/
-
-}
+    }
 ?>
 <div class="wrapper">
     <div class="container-fluid">
