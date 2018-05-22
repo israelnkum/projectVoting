@@ -23,7 +23,7 @@ if (isset($_POST['btn_update'])){
     $editPreviousPositon  = !empty($_POST['$editPreviousPositon']) ? trim($_POST['$editPreviousPositon']) : null;
     $img_name =$editVotingName.$editNomineePosition.$editIndexNumber;
     if ($_FILES["nomineeImage"]["name"] !== ""){
-        //Retrieve the field values from our registration form.
+       
 
 
         $file = $_FILES['nomineeImage'];
